@@ -23,6 +23,7 @@ module "grafana" {
   plugins:
   - digrich-bubblechart-panel
   - grafana-clock-panel
+  - grafana-singlestat-panel
   datasources:
     datasources.yaml:
       apiVersion: 1
@@ -37,6 +38,9 @@ module "grafana" {
       prometheus-stats:
         gnetId: 2
         revision: 2
+        datasource: Prometheus
+      kubernetes-cluster:
+        gnetId: 6417
         datasource: Prometheus
   dashboardProviders:
     dashboardproviders.yaml:
