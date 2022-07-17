@@ -13,11 +13,9 @@ module "prometheus" {
       value = ""
     }
   ]
-  values = [<<EOF
-grafana:
-  enabled: false
-  ingress:
-    enabled: true
+  values = [<<-EOF
+  grafana:
+    enabled: false
 EOF
   ]
 }
