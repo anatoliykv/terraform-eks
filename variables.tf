@@ -3,4 +3,6 @@ variable "subnets" {
   default = []
 }
 variable "vpc_id" {}
-variable "alb_url" {}
+
+variable "tags" {}
+variable "hosted_zone" {}

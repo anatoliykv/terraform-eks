@@ -8,9 +8,11 @@ module "grafana" {
   repository       = "https://grafana.github.io/helm-charts"
   wait             = true
   set              = []
+  hosted_zone      = var.hosted_zone
   values = [<<-EOF
   ingress:
     enabled: true
+    path: /
     annotations:
       kubernetes.io/ingress.class: alb
       alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
@@ -18,8 +20,11 @@ module "grafana" {
       alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
       alb.ingress.kubernetes.io/subnets: ${join(", ", var.subnets)}
       alb.ingress.kubernetes.io/target-type: ip
+      alb.ingress.kubernetes.io/tags: ${join(",", [for key, value in var.tags : "${key}=${value}"])}
+      alb.ingress.kubernetes.io/group.name: my-team.awesome-group
+      alb.ingress.kubernetes.io/success-codes: 200,302
     hosts:
-    - ${var.alb_url}
+    - grafana.${var.hosted_zone}
   plugins:
   - digrich-bubblechart-panel
   - grafana-clock-panel

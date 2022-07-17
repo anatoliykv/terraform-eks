@@ -11,3 +11,4 @@ variable "atomic" {}
 variable "namespace" {}
 variable "create_namespace" {}
 variable "wait" {}
+variable "hosted_zone" {}

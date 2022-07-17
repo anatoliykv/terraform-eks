@@ -60,10 +60,7 @@ module "eks" {
     "controllerManager"
   ]
 
-  tags = {
-    Environment = "dev"
-    Terraform   = "true"
-  }
+  tags = var.tags
 }
 
 

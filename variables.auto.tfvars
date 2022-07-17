@@ -1,3 +1,7 @@
-subnets = ["subnet-0d96c36e091d8b52d", "subnet-05a946bc46987dbda", "subnet-0f5857cfc40cf236f"]
-vpc_id  = "vpc-0e95912eef29e7a0c"
-alb_url = "k8s-grafana-grafana-1593f250f0-2067958484.us-east-1.elb.amazonaws.com"
+subnets = ["subnet-0e840309c523e2664", "subnet-0113bf868ef9a3ee4", "subnet-0da22ccda7e40d327"]
+vpc_id  = "vpc-0e952c09a617e4c10"
+tags = {
+  Environment = "dev"
+  Terraform   = "true"
+}
+hosted_zone = "cmcloudlab409.info"
