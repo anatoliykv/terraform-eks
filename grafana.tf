@@ -12,6 +12,28 @@ module "grafana" {
   hosted_zone      = var.hosted_zone
   tags             = var.tags
   values = [<<-EOF
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 1
+    metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 60
+    - type: Resource
+      resource:
+        name: memory
+        targetAverageUtilization: 60
+  podDisruptionBudget:
+    minAvailable: 1
+  resources:
+    limits:
+      cpu: 300m
+      memory: 256Mi
+    requests:
+      cpu: 200m
+      memory: 128Mi
   ingress:
     enabled: true
     path: /
@@ -72,11 +94,11 @@ module "grafana" {
           path: /var/lib/grafana/dashboards/loki
   dashboards:
     default:
-      prometheus-stats:
+      k8s-for-prometheus-dashboard-20211010-EN:
         gnetId: 15661
         datasource: Prometheus
-      kubernetes-cluster:
-        gnetId: 6417
+      cluster-monitoring-for-kubernetes:
+        gnetId: 10000
         datasource: Prometheus
     loki:
       loki:
