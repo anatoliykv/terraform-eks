@@ -8,9 +8,8 @@ module "grafana" {
   namespace        = var.namespace
   create_namespace = var.create_namespace
   wait             = var.wait
-  values           = concat(var.values, [<<-EOF
-
-    EOF
+  values = concat(var.values, [<<-EOF
+  EOF
   ])
 }
 
@@ -28,9 +27,9 @@ data "aws_route53_zone" "selected" {
 
 resource "aws_route53_record" "grafana_record" {
   depends_on = [data.kubernetes_ingress_v1.grafana_ingress]
-  zone_id = data.aws_route53_zone.selected.zone_id
-  name    = var.name
-  type    = "CNAME"
-  ttl     = "300"
-  records = [data.kubernetes_ingress_v1.grafana_ingress.status.0.load_balancer.0.ingress.0.hostname]
+  zone_id    = data.aws_route53_zone.selected.zone_id
+  name       = var.name
+  type       = "CNAME"
+  ttl        = "300"
+  records    = [data.kubernetes_ingress_v1.grafana_ingress.status.0.load_balancer.0.ingress.0.hostname]
 }

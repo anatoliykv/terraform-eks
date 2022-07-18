@@ -73,8 +73,7 @@ module "grafana" {
   dashboards:
     default:
       prometheus-stats:
-        gnetId: 2
-        revision: 2
+        gnetId: 15661
         datasource: Prometheus
       kubernetes-cluster:
         gnetId: 6417
