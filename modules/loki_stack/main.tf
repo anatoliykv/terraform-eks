@@ -45,7 +45,11 @@ loki:
       http_listen_port: 3100
     storage_config:
       aws:
+<<<<<<< HEAD
         s3: s3://${data.aws_region.current.name}/${var.loki_bucket_id}
+=======
+        s3: s3://us-east-1/${var.loki_bucket_id}
+>>>>>>> 011a58f3a85b5cab8bcadc30fab8bfc2ff400d14
       boltdb_shipper:
         active_index_directory: /data/loki/index
         shared_store: s3

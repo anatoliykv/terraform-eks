@@ -9,6 +9,10 @@ module "grafana" {
   create_namespace = var.create_namespace
   wait             = var.wait
   values           = concat(var.values, [<<-EOF
+<<<<<<< HEAD
+=======
+
+>>>>>>> 011a58f3a85b5cab8bcadc30fab8bfc2ff400d14
     EOF
   ])
 }
