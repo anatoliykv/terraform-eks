@@ -62,13 +62,8 @@ module "grafana" {
         editable: true
         options:
           path: /var/lib/grafana/dashboards/default
-<<<<<<< HEAD
-      - name: loki
-        orgId: 1
-=======
       - name: 'loki'
         orgId: 2
->>>>>>> 011a58f3a85b5cab8bcadc30fab8bfc2ff400d14
         folder: 'Loki'
         type: file
         disableDeletion: false
@@ -89,15 +84,6 @@ module "grafana" {
         gnetId: 12019
         revision: 2
         datasource: Loki
-<<<<<<< HEAD
-      logs-app:
-        gnetId: 13639
-        datasource: Loki
-      loki-v2-events-dashboard-for-kubernetes:
-        gnetId: 14003
-        datasource: Loki
-=======
->>>>>>> 011a58f3a85b5cab8bcadc30fab8bfc2ff400d14
   EOF
   ]
 }
