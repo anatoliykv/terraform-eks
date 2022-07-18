@@ -1,6 +1,6 @@
-subnets     = ["subnet-0d87b1c88393e2388", "subnet-05e1d09f31f936cb6", "subnet-04a4a3d1bc98384ff"]
-vpc_id      = "vpc-0625c0e219276577e"
-hosted_zone = "cmcloudlab303.info"
+subnets     = ["subnet-0a49d840201d53f8a", "subnet-001352df2d76f3b2b", "subnet-0f8c294470bb581b0"]
+vpc_id      = "vpc-0bce6de2ba1dcbc34"
+hosted_zone = "cmcloudlab994.info"
 tags = {
   Environment = "dev"
   Terraform   = "true"

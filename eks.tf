@@ -35,7 +35,7 @@ module "eks" {
     test = {
       min_size               = 1
       max_size               = 5
-      desired_size           = 1
+      desired_size           = 2
       instance_types         = ["t3.large"]
       capacity_type          = "ON_DEMAND"
       create_launch_template = false
