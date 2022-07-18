@@ -42,8 +42,34 @@ module "grafana" {
       - name: Prometheus
         type: prometheus
         url: http://kube-prometheus-stack-prometheus.prometheus-stack.svc.cluster.local:9090
-        access: proxy
+        access: Server
         isDefault: true
+      - name: Loki
+        type: loki
+        access: Server
+        url: http://loki-stack.loki-stack.svc.cluster.local:3100
+        jsonData:
+          maxLines: 1000
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+      - name: default
+        orgId: 1
+        folder: ''
+        type: file
+        disableDeletion: false
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/default
+      - name: loki
+        orgId: 1
+        folder: 'Loki'
+        type: file
+        disableDeletion: false
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/loki
   dashboards:
     default:
       prometheus-stats:
@@ -53,18 +79,17 @@ module "grafana" {
       kubernetes-cluster:
         gnetId: 6417
         datasource: Prometheus
-  dashboardProviders:
-    dashboardproviders.yaml:
-      apiVersion: 1
-      providers:
-      - name: 'default'
-        orgId: 1
-        folder: ''
-        type: file
-        disableDeletion: false
-        editable: true
-        options:
-          path: /var/lib/grafana/dashboards/default
+    loki:
+      loki:
+        gnetId: 12019
+        revision: 2
+        datasource: Loki
+      logs-app:
+        gnetId: 13639
+        datasource: Loki
+      loki-v2-events-dashboard-for-kubernetes:
+        gnetId: 14003
+        datasource: Loki
   EOF
   ]
 }
