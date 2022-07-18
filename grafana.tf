@@ -42,11 +42,11 @@ module "grafana" {
       - name: Prometheus
         type: prometheus
         url: http://kube-prometheus-stack-prometheus.prometheus-stack.svc.cluster.local:9090
-        access: Server
+        access: proxy
         isDefault: true
       - name: Loki
         type: loki
-        access: Server
+        access: proxy
         url: http://loki-stack.loki-stack.svc.cluster.local:3100
         jsonData:
           maxLines: 1000
@@ -62,9 +62,9 @@ module "grafana" {
         editable: true
         options:
           path: /var/lib/grafana/dashboards/default
-      - name: 'loki'
-        orgId: 2
-        folder: 'Loki'
+      - name: loki
+        orgId: 1
+        folder: Loki
         type: file
         disableDeletion: false
         editable: true
@@ -81,9 +81,7 @@ module "grafana" {
         datasource: Prometheus
     loki:
       loki:
-        gnetId: 12019
-        revision: 2
-        datasource: Loki
+        url: https://raw.githubusercontent.com/anatoliykv/terraform-eks/master/modules/grafana/dashboards/loki-dashboard-quick-search_rev2.json
   EOF
   ]
 }

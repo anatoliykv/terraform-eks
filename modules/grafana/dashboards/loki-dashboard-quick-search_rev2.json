@@ -81,7 +81,7 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_LOKI}",
+      "datasource": "Loki",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -165,7 +165,7 @@
       }
     },
     {
-      "datasource": "${DS_LOKI}",
+      "datasource": "Loki",
       "gridPos": {
         "h": 25,
         "w": 24,
@@ -211,13 +211,13 @@
   ],
   "schemaVersion": 22,
   "style": "dark",
-  "tags": [],
+  "tags": ["loki", "logs", "self-managed"],
   "templating": {
     "list": [
       {
         "allValue": null,
         "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": "Prometheus",
         "definition": "label_values(kube_pod_info, namespace)",
         "hide": 0,
         "includeAll": false,
@@ -240,7 +240,7 @@
       {
         "allValue": ".*",
         "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": "Prometheus",
         "definition": "label_values(container_network_receive_bytes_total{namespace=~\"$namespace\"},pod)",
         "hide": 0,
         "includeAll": true,
@@ -301,7 +301,7 @@
     ]
   },
   "timezone": "",
-  "title": "Loki Dashboard quick search",
+  "title": "Loki Dashboard",
   "uid": "liz0yRCZz",
   "variables": {
     "list": []
