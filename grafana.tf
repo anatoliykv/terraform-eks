@@ -100,6 +100,11 @@ module "grafana" {
       cluster-monitoring-for-kubernetes:
         gnetId: 10000
         datasource: Prometheus
+      kubernetes-Deployment-Statefulset-Daemonset-metrics:
+        gnetId: 8588
+        datasource: Prometheus
+      kubernetes-Cluster-Autoscaler:
+        url: https://raw.githubusercontent.com/anatoliykv/terraform-eks/master/modules/grafana/dashboards/autoscaler_rev1.json
     loki:
       loki:
         url: https://raw.githubusercontent.com/anatoliykv/terraform-eks/master/modules/grafana/dashboards/loki-dashboard-quick-search_rev2.json
