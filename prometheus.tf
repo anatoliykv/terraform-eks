@@ -1,5 +1,5 @@
 module "prometheus" {
-  depends_on       = [module.s3]
+  depends_on       = [module.s3, module.alb-ingress-controller]
   source           = "./modules/prometheus"
   chart            = "kube-prometheus-stack"
   name             = "kube-prometheus-stack"
@@ -20,7 +20,6 @@ module "prometheus" {
     ingress:
       enabled: true
       paths:
-      - /
       - /*
       hosts:
       - kube-prometheus-stack.${var.hosted_zone}

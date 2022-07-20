@@ -1,4 +1,5 @@
 module "alb-ingress-controller" {
+  depends_on              = [module.eks]
   source                  = "./modules/alb-ingress-controller"
   atomic                  = true
   chart                   = "aws-load-balancer-controller"

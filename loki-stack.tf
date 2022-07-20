@@ -1,4 +1,5 @@
 module "loki-stack" {
+  depends_on              = [module.eks]
   source                  = "./modules/loki_stack"
   atomic                  = true
   chart                   = "loki-stack"

@@ -1,4 +1,5 @@
 module "acm" {
+  depends_on  = [module.eks]
   source      = "./modules/certificate_manager"
   domain_name = var.hosted_zone
   subject_alternative_names = [
