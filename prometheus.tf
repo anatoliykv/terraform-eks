@@ -10,8 +10,12 @@ module "prometheus" {
   wait             = true
   set = [
     {
-      name  = "namespaceOverride"
-      value = ""
+      name  = "alertmanager.persistentVolume.storageClass"
+      value = "gp2"
+    },
+    {
+      name  = "server.persistentVolume.storageClass"
+      value = "gp2"
     }
   ]
   values = [<<-EOF
