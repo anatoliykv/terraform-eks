@@ -1,10 +1,10 @@
 variable "domain_name" {
   default = null
-  type = string
+  type    = string
 }
 
 variable "subject_alternative_names" {
-  type = list(string)
+  type    = list(string)
   default = []
 }
 variable "tags" {}

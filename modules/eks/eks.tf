@@ -1,8 +1,9 @@
 module "eks" {
+  create = var.create
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 18.26"
 
-  cluster_name    = "my-cluster"
+  cluster_name    = var.cluster_name
   cluster_version = "1.22"
 
   cluster_endpoint_private_access      = true
@@ -29,7 +30,7 @@ module "eks" {
     }
   }
 
-  #  create_aws_auth_configmap = true
+#  create_aws_auth_configmap = true
   manage_aws_auth_configmap = true
 
   eks_managed_node_groups = {

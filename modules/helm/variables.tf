@@ -5,9 +5,9 @@ variable "namespace" {}
 variable "atomic" {}
 variable "set" {
   description = "(Optional) Value block with custom values to be merged with the values yaml."
-  default = []
+  default     = []
   type = list(object({
-    name = string
+    name  = string
     value = string
   }))
 }

@@ -31,7 +31,7 @@ module "prometheus" {
         kubernetes.io/ingress.class: alb
         alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
         alb.ingress.kubernetes.io/scheme: internet-facing
-        alb.ingress.kubernetes.io/subnets: ${join(", ", var.subnets)}
+        alb.ingress.kubernetes.io/subnets: ${join(", ", module.vpc.public_subnets)}
         alb.ingress.kubernetes.io/target-type: ip
         alb.ingress.kubernetes.io/tags: ${join(",", [for key, value in var.tags : "${key}=${value}"])}
         alb.ingress.kubernetes.io/group.name: my-team.awesome-group

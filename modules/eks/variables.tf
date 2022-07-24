@@ -10,3 +10,10 @@ variable "tags" {
 variable "cluster_endpoint_public_access_cidrs" {
   type = list(string)
 }
+variable "create" {
+  type    = bool
+  default = false
+}
+variable "cluster_name" {
+  type = string
+}
