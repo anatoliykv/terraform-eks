@@ -10,6 +10,7 @@ locals {
     ]
   )
 }
+
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
@@ -41,10 +42,4 @@ module "vpc" {
 data "aws_availability_zones" "available" {
   state = "available"
   exclude_names = ["us-east-1e"]
-}
-
-
-
-output "private_subnets_list" {
-  value = local.private_subnets_list[*]
 }
