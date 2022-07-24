@@ -1,5 +1,5 @@
 module "prometheus" {
-  depends_on       = [module.s3, module.alb-ingress-controller]
+  depends_on       = [module.s3, module.alb-ingress-controller, module.vpc]
   source           = "./modules/prometheus"
   chart            = "kube-prometheus-stack"
   name             = "kube-prometheus-stack"

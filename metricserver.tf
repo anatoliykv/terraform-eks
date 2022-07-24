@@ -1,5 +1,5 @@
 module "metricserver" {
-  depends_on       = [module.eks]
+  depends_on       = [module.eks, module.vpc]
   source           = "./modules/metricserver"
   atomic           = true
   chart            = "metrics-server"

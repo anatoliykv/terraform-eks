@@ -1,5 +1,5 @@
 module "eks" {
-  create = var.create
+#  create = var.create
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 18.26"
 

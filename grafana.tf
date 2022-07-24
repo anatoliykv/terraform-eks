@@ -1,5 +1,5 @@
 module "grafana" {
-  depends_on       = [module.s3, module.alb-ingress-controller]
+  depends_on       = [module.s3, module.alb-ingress-controller, module.vpc]
   source           = "./modules/grafana"
   atomic           = true
   chart            = "grafana"
