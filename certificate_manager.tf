@@ -1,4 +1,5 @@
 module "acm" {
+  count       = var.cluster_name == "" ? 0 : 1
   depends_on  = [module.eks]
   source      = "./modules/certificate_manager"
   domain_name = var.hosted_zone

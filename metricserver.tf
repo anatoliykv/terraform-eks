@@ -1,4 +1,5 @@
 module "metricserver" {
+  count            = var.cluster_name == "" ? 0 : 1
   depends_on       = [module.eks, module.vpc]
   source           = "./modules/metricserver"
   atomic           = true

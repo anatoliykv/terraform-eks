@@ -1,6 +1,6 @@
 module "eks" {
+  count                                = var.cluster_name == "" ? 0 : 1
   source                               = "./modules/eks"
-  create                               = true
   vpc_id                               = module.vpc.vpc_id
   subnets                              = module.vpc.private_subnets
   tags                                 = var.tags

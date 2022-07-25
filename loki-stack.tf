@@ -1,4 +1,5 @@
 module "loki-stack" {
+  count                   = var.cluster_name == "" ? 0 : 1
   depends_on              = [module.eks, module.vpc]
   source                  = "./modules/loki_stack"
   atomic                  = true
@@ -10,8 +11,8 @@ module "loki-stack" {
   set                     = []
   wait                    = true
   iam_role_name           = "loki-s3-bucket-role"
-  bucket_arn              = module.s3.loki_bucket_arn
-  cluster_oidc_issuer_url = module.eks.cluster_oidc_issuer_url
-  oidc_provider_arn       = module.eks.oidc_provider_arn
-  loki_bucket_id          = module.s3.loki_bucket_id
+  bucket_arn              = module.s3[0].loki_bucket_arn
+  cluster_oidc_issuer_url = module.eks[0].cluster_oidc_issuer_url
+  oidc_provider_arn       = module.eks[0].oidc_provider_arn
+  loki_bucket_id          = module.s3[0].loki_bucket_id
 }

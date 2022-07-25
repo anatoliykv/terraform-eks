@@ -1,5 +1,5 @@
 module "eks" {
-#  create = var.create
+
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 18.26"
 
@@ -30,7 +30,7 @@ module "eks" {
     }
   }
 
-#  create_aws_auth_configmap = true
+  #  create_aws_auth_configmap = true
   manage_aws_auth_configmap = true
 
   eks_managed_node_groups = {
